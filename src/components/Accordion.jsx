@@ -19,10 +19,11 @@ const data = [
 ];
 
 function Accordion() {
+  const [Open, setOpen] = useState(null); //save accordion id 1,2,3,...
   return (
     <div className="accordion">
       {data.map((item) => (
-        <AccordionItem key={item.id} item={item} />
+        <AccordionItem key={item.id} item={item} setOpen={setOpen} open={Open}/>
       ))}
     </div>
   );
@@ -30,14 +31,13 @@ function Accordion() {
 
 export default Accordion;
 
-function AccordionItem({ item }) {
-  const [isOpen, setIsOpen] = useState(false);
-
+function AccordionItem({ item,setOpen,open }) {
+const isOpen=item.id===open ;
   return (
     <div className={`accordion-item ${isOpen ? "accordion__expanded" : ""}`}>
       <div
         className="accordion-item__header"
-        onClick={() => setIsOpen((is) => !is)}
+        onClick={() => setOpen(item.id)}
       >
         <div>{item.title}</div>
         <ChevronDownIcon
