@@ -20,6 +20,7 @@ body {
   max-width: 50rem;
   border-radius: 1rem;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .accordion-item {
